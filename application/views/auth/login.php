@@ -121,12 +121,6 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        localStorage.setItem("session", JSON.stringify({
-                            id: response.data.id,
-                            username: response.data.username,
-                            role: response.data.student_id === null ? "admin" : "murid"
-                        }));
-
                         response.data.student_id === null ?
                             window.location.href = "/ppdb/dashboard/admin" :
                             window.location.href = "/ppdb/dashboard/student";

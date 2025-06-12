@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
-    public $db, $input, $output, $User_model;
+    public $db, $input, $output, $session, $User_model;
 
     public function __construct()
     {
@@ -19,6 +19,10 @@ class Auth extends CI_Controller
 
             $user = $this->User_model->get_by_username($username);
             if ($user && password_verify($password, $user->password)) {
+                $this->session->set_userdata('user_id', $user->id);
+                $this->session->set_userdata('username', $user->username);
+                $this->session->set_userdata('role', $user->student_id === null ? 'admin' : 'murid');
+
                 $this->output
                     ->set_content_type('application/json')
                     ->set_output(json_encode([
@@ -39,7 +43,7 @@ class Auth extends CI_Controller
             }
         }
 
-        $admin = $this->User_model->get_by_username("admin");
+        $admin = $this->User_model->get_by_username('admin');
 
         if (!$admin) {
             $data = [
@@ -56,5 +60,12 @@ class Auth extends CI_Controller
     public function register()
     {
         $this->load->view('auth/register');
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+
+        redirect('auth/login');
     }
 }
