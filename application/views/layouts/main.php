@@ -12,10 +12,11 @@
 
 <body style="background-color: #eee;">
     <div class="d-flex" style="height: 100vh;">
-        <div class="m-3 p-3 rounded-3 bg-white color-body" style="min-width: 20rem;">
+        <div class="p-3 bg-white color-body" style="min-width: 20rem;">
             <?= $sidebar ?? '' ?>
         </div>
-        <div class="m-3 flex-grow-1 rounded-3 overflow-auto">
+        <div class="ms-5 me-4 flex-grow-1 overflow-auto">
+            <?= $navbar ?? '' ?>
             <?= $content ?? '' ?>
         </div>
     </div>

@@ -6,8 +6,11 @@
     }
 
     table#table thead {
-        height: 4rem;
         vertical-align: middle;
+    }
+
+    table#table thead th {
+        padding: 1.5rem 0rem;
     }
 
     table#table tbody tr {
@@ -30,13 +33,13 @@
     <table id="table" class="table align-middle">
         <thead>
             <tr>
-                <th class="text-center">Tanggal Daftar</th>
+                <th class="text-center">Tanggal<br>Daftar</th>
                 <th class="text-center">Nama & No. PPDB<br>Calon Siswa</th>
                 <th class="text-center">NISN</th>
-                <th class="text-center">Jenis Kelamin</th>
-                <th class="text-center">Kelas Dipilih</th>
-                <th class="text-center">Asal Sekolah</th>
-                <th class="text-center">Status Pendaftaran</th>
+                <th class="text-center">Jenis<br>Kelamin</th>
+                <th class="text-center">Kelas<br>Dipilih</th>
+                <th class="text-center">Asal<br>Sekolah</th>
+                <th class="text-center">Status<br>Pendaftaran</th>
                 <th class="text-center">Aksi</th>
             </tr>
         </thead>
@@ -54,7 +57,7 @@
                     <td class="fw-semibold text-center"><?= ucfirst($student->gender) ?></td>
                     <td class="fw-semibold text-center">MTS / Kelas 7</td>
                     <td class="fw-semibold text-center"><?= $student->prev_school_name ?></td>
-                    <td class="fw-bold text-center">Sedang Diproses</td>
+                    <td class="fw-bold text-center" style="color: var(--body) !important;">Sedang Diproses</td>
                     <td class="text-center">
                         <a href="<?= base_url('/students/' . $student->id) ?>" class="btn btn-warning text-white fw-bold">
                             Verifikasi Data
