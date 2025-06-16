@@ -3,6 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends MY_Controller
 {
+	public function index()
+	{
+		if (!$this->session->userdata('user_id')) {
+            redirect('auth/login');
+        } else if ($this->session->userdata('role') === 'admin') {
+			redirect('dashboard/admin');
+		} else {
+			redirect('rereg/upload');
+		}
+	}
+
 	public function admin()
 	{
 		$data['page_title'] = 'Dashboard';
