@@ -64,6 +64,24 @@
                 </div>
             </div>
         </div>
+    <?php elseif ($student_payment->status === 'confirmed'): ?>
+        <div class="d-flex w-100 mb-4 px-4 align-items-center rounded-3 bg-white" style="height: 6rem; border-left: 1rem solid #43b638;">
+            <h2 class="fw-bold" style="font-size: 20px;">Pembayaran</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex w-100 flex-column align-items-center justify-content-between bg-white" style="height: 31rem; margin-bottom: 1.125rem; padding: 3rem; gap: 1.5rem; border-radius: var(--bs-border-radius-lg);">
+                    <img src="<?= base_url('/assets/img/pay/paid.png') ?>" alt="paid" width="450">
+                    <div class="d-flex flex-column text-center" style="gap: 1rem;">
+                        <p class="fw-bold">Anda telah melakukan Pembayaran Daftar Ulang!!!</p>
+                        <p class="fw-bold color-body" style="font-size: 0.75rem;">Silakan cek notifikasi WhatsApp dari admin PPDB terkait Info status pembayaran daftar ulang anda dan informasi penting lainnya.</p>
+                    </div>
+                </div>
+                <div id="skl-file-name" class="d-flex flex-column mb-4 fw-bold" style="font-size: 0.825rem; gap: 1.125rem;">
+                </div>
+            </div>
+        </div>
     <?php endif; ?>
 </div>
 

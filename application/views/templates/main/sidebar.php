@@ -73,10 +73,10 @@
 
             <hr class="sidebar-hr">
 
-            <div role="button" id="re-reg-menu" class="d-flex align-items-center gap-3">
-                <img src="<?= in_array($active_menu, ['user', 'reg-file']) ? base_url('/assets/img/sidebar/student-active.png') : base_url('/assets/img/sidebar/student.png') ?>" alt="re-reg" width="29">
+            <div role="button" id="rereg-menu" class="d-flex align-items-center gap-3">
+                <img src="<?= in_array($active_menu, ['user', 'rereg']) ? base_url('/assets/img/sidebar/student-active.png') : base_url('/assets/img/sidebar/student.png') ?>" alt="rereg" width="29">
 
-                <p class="fw-bold <?= in_array($active_menu, ['user', 'reg-file']) ? 'menu-active' : '' ?>">Daftar Ulang Calon Siswa</p>
+                <p class="fw-bold <?= in_array($active_menu, ['user', 'rereg']) ? 'menu-active' : '' ?>">Daftar Ulang Calon Siswa</p>
 
                 <div class="ms-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <div id="re-reg-submenu" class="ps-4" style="display: none;">
+            <div id="rereg-submenu" class="ps-4" style="display: none;">
                 <div style="margin: 2rem 0;"></div>
 
                 <a href="<?= base_url('users') ?>" class="d-flex align-items-center gap-3">
@@ -96,10 +96,10 @@
 
                 <div style="margin: 2rem 0;"></div>
 
-                <a href="<?= base_url('tests') ?>" class="d-flex align-items-center gap-3">
-                    <img src="<?= $active_menu === 'reg-file' ? base_url('/assets/img/sidebar/user-file-active.png') : base_url('/assets/img/sidebar/user-file.png') ?>" alt="students" width="29">
+                <a href="<?= base_url('rereg') ?>" class="d-flex align-items-center gap-3">
+                    <img src="<?= $active_menu === 'rereg' ? base_url('/assets/img/sidebar/user-file-active.png') : base_url('/assets/img/sidebar/user-file.png') ?>" alt="students" width="29">
 
-                    <p class="fw-bold <?= $active_menu === 'reg-file' ? 'menu-active' : '' ?>">Data Pendaftaran Ulang</p>
+                    <p class="fw-bold <?= $active_menu === 'rereg' ? 'menu-active' : '' ?>">Data Pendaftaran Ulang</p>
                 </a>
             </div>
         </div>

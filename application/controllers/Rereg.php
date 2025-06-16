@@ -15,6 +15,86 @@ class Rereg extends MY_Controller
         $this->load->model('User_model');
     }
 
+    public function index()
+    {
+        $count_uploaded = 0;
+
+        $students = $this->Student_model->get_all();
+        foreach ($students as &$student) {
+            $student->uploads = $this->db->get_where('student_uploads', ['student_id' => $student->id])->result();
+            if (sizeof($student->uploads) > 0) $count_uploaded++;
+            $student->payment = $this->Payment_model->get_rereg_by_student($student->id);
+        }
+
+        $data_content = [
+            'students' => $students,
+            'count_uploaded' => $count_uploaded
+        ];
+
+        $data['page_title'] = 'Berkas & Bukti Pembayaran';
+        $data['sidebar'] = $this->load->view('templates/main/sidebar', ['active_menu' => 'rereg'], TRUE);
+        $data['navbar'] = $this->load->view('templates/main/navbar', [], TRUE);
+        $data['content'] = $this->load->view('rereg/index', $data_content, TRUE);
+
+        $data['script'] = '<script src="' . base_url('/assets/js/rereg/index.js') . '"></script>';
+
+        $this->load->view('layouts/main', $data);
+    }
+
+    public function show($student_id)
+    {
+        $student = $this->Student_model->get_by_id($student_id);
+        $student->uploads = $this->db->get_where('student_uploads', ['student_id' => $student_id])->result();
+        $student->payment = $this->Payment_model->get_rereg_by_student($student_id);
+        $student->upload_map = [];
+        foreach ($student->uploads as $upload) {
+            $student->upload_map[$upload->type] = $upload;
+        }
+
+
+        $data_content = [
+            'student' => $student
+        ];
+
+        $data['page_title'] = 'Berkas & Bukti Pembayaran';
+        $data['sidebar'] = $this->load->view('templates/main/sidebar', ['active_menu' => 'rereg'], TRUE);
+        $data['navbar'] = $this->load->view('templates/main/navbar', [], TRUE);
+        $data['content'] = $this->load->view('rereg/show', $data_content, TRUE);
+
+        $data['script'] = '<script src="' . base_url('/assets/js/rereg/show.js') . '"></script>';
+
+        $this->load->view('layouts/main', $data);
+    }
+
+    public function pay_confirm()
+    {
+        $this->db->trans_start();
+
+        $data = [
+            'status' => 'confirmed',
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+        $this->db->where(['student_id' => $this->input->post('id'), 'type' => 'rereg'])->update('payments', $data);
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === FALSE) {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => false,
+                    'message' => 'Terjadi kesalahan.'
+                ]));
+        } else {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_output(json_encode([
+                    'success' => true,
+                    'message' => 'Konfirmasi berhasil!!!'
+                ]));
+        }
+    }
+
     public function upload()
     {
         $student_id = $this->User_model->get_by_id($this->session->userdata('user_id'))->student_id;
@@ -100,7 +180,7 @@ class Rereg extends MY_Controller
                 ->set_content_type('application/json')
                 ->set_output(json_encode([
                     'success' => true,
-                    'message' => 'Submit berhasil.'
+                    'message' => 'Submit berhasil!!!'
                 ]));
         }
     }

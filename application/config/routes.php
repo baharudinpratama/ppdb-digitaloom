@@ -64,3 +64,4 @@ $route['payments'] = '/payment';
 $route['tests'] = '/test';
 $route['users'] = '/student/user';
 $route['users/(:num)'] = '/student/user_show/$1';
+$route['rereg/(:num)'] = '/rereg/show/$1';
