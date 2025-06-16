@@ -14,7 +14,7 @@
         <div class="d-flex w-100 justify-content-center align-items-center">
             <div class="d-flex flex-column p-5 rounded-3 bg-white">
                 <div class="d-flex pb-5 justify-content-center">
-                    <img src="<?= base_url('assets/images/logo.png') ?>" alt="Logo" width="180">
+                    <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo" width="180">
                 </div>
                 <div class="d-flex flex-column pb-5" style="max-width: 32rem;">
                     <h1 class="fw-bold" style="font-size: 25px;">Pilih Jenis Pendaftaran Calon Siswa</h1>

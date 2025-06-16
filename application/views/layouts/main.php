@@ -12,10 +12,10 @@
 
 <body style="background-color: #eee;">
     <div class="d-flex" style="height: 100vh;">
-        <div class="p-3 bg-white color-body" style="min-width: 20rem;">
+        <div class="m-3 p-3 rounded-3 bg-white color-body" style="min-width: 20rem; width: 20rem;">
             <?= $sidebar ?? '' ?>
         </div>
-        <div class="ms-5 me-4 flex-grow-1 overflow-auto">
+        <div class="p-3 flex-grow-1 overflow-auto">
             <?= $navbar ?? '' ?>
             <?= $content ?? '' ?>
         </div>
@@ -25,7 +25,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.bootstrap5.js"></script>
-    <!-- <script src="<?= base_url('/assets/js/register/index.js') ?>"></script> -->
+    <script>
+        const BASE_URL = "<?= base_url() ?>";
+        const ACTIVE_MENU = "<?= $active_menu ?>";
+    </script>
+    <script src="<?= base_url() ?>assets/js/layouts/main.js"></script>
     <?= $script ?? '' ?>
 </body>
 

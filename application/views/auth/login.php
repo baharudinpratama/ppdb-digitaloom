@@ -23,11 +23,11 @@
         <div class="row h-100 p-2">
             <div class="col-md-6 p-0">
                 <div class="h-100 position-relative p-0">
-                    <img src="<?= base_url('assets/images/login-bg.jpg') ?>" class="w-100 h-100 object-fit-cover rounded-3" alt="Background">
+                    <img src="<?= base_url('assets/img/login-bg.jpg') ?>" class="w-100 h-100 object-fit-cover rounded-3" alt="Background">
                     <div class="position-absolute top-0 start-0 w-100 h-100 p-4 d-flex flex-column justify-content-end align-items-start rounded-3 bg-dark bg-opacity-50 text-white">
                         <div class="position-absolute" style="top: 2rem; left: 2rem;">
                             <div class="d-flex align-items-center gap-3">
-                                <img src="<?= base_url('assets/images/logo.png') ?>" alt="Logo" width="90">
+                                <img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo" width="90">
                                 <div class="d-flex flex-column text-start fw-semibold" style="max-width: 16rem;">
                                     <p>PESANTREN</p>
                                     <p>TAHFIZH EKONOMI ISLAM MULTAZAM</p>
@@ -89,7 +89,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="d-flex flex-column p-5 align-items-center">
-                        <img src="<?= base_url('/assets/images/message.gif') ?>" alt="Message" width="160" class="img-fluid mb-4">
+                        <img src="<?= base_url('/assets/img/message.gif') ?>" alt="Message" width="160" class="img-fluid mb-4">
                         <p class="fw-bold" style="font-size: 20px;">Sedang Mengirim...</p>
                     </div>
                 </div>
@@ -123,19 +123,19 @@
                     if (response.success) {
                         response.data.student_id === null ?
                             window.location.href = "/ppdb/dashboard/admin" :
-                            window.location.href = "/ppdb/dashboard/student";
+                            window.location.href = "/ppdb/rereg/upload";
                     } else {
                         setTimeout(function() {
                             modalLoading.hide();
                             alert(response.message);
-                        }, 3000);
+                        }, 1000);
                     }
                 },
                 error: function(xhr, status, error) {
                     setTimeout(function() {
                         modalLoading.hide();
                         alert("Terjadi kesalahan.");
-                    }, 3000);
+                    }, 1000);
                 }
             });
         });

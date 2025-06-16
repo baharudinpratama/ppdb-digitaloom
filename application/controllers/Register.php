@@ -3,7 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Register extends CI_Controller
 {
-    public $db, $input, $output, $upload;
+    public $db, $input, $output, $upload, $Payment_model, $Student_model, $Test_model;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Payment_model');
+        $this->load->model('Student_model');
+        $this->load->model('Test_model');
+    }
 
     public function student()
     {
@@ -86,11 +94,14 @@ class Register extends CI_Controller
             'class_program' => $this->input->post('class_program'),
             'created_at' => date('Y-m-d H:i:s')
         ];
-        $this->db->insert('students', $data);
+        $this->Student_model->insert($data);
 
         $student_id = $this->db->insert_id();
 
-        if ($this->input->post('father_name') !== "") {
+        $reg_number = 'PPDB-' . $this->input->post('nisn') . "-" . sprintf('%03d', $student_id);
+        $this->Student_model->update($student_id, ['reg_number' => $reg_number]);
+
+        if ($this->input->post('father_name') !== '') {
             $data = [
                 'student_id' => $student_id,
                 'type' => 'ayah',
@@ -107,7 +118,7 @@ class Register extends CI_Controller
             $this->db->insert('parents', $data);
         }
 
-        if ($this->input->post('mother_name') !== "") {
+        if ($this->input->post('mother_name') !== '') {
             $data = [
                 'student_id' => $student_id,
                 'type' => 'ibu',
@@ -124,7 +135,7 @@ class Register extends CI_Controller
             $this->db->insert('parents', $data);
         }
 
-        if ($this->input->post('caretaker_name') !== "") {
+        if ($this->input->post('caretaker_name') !== '') {
             $data = [
                 'student_id' => $student_id,
                 'type' => 'wali',
@@ -183,6 +194,20 @@ class Register extends CI_Controller
                 }
             }
         }
+
+        $data =[
+            'student_id' => $student_id,
+            'type' => 'test',
+            'amount' => 250000,
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+        $this->Payment_model->insert($data);
+
+        $data =[
+            'student_id' => $student_id,
+            'created_at' => date('Y-m-d H:i:s')
+        ];
+        $this->Test_model->insert($data);
 
         $this->db->trans_complete();
 

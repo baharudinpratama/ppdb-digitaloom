@@ -66,18 +66,26 @@ $("#confirmation-form").on("submit", async function (e) {
                 };
 
                 modalResponse.show();
+
+                $("#modal-response .btn-ok").on("click", function () {
+                    window.location.href = '/ppdb/register/student';
+                })
+
+                setTimeout(function () {
+                    window.location.href = '/ppdb/register/student';
+                }, 1000 * 5);
             } else {
                 setTimeout(function () {
                     modalLoading.hide();
                     alert(response.message);
-                }, 3000);
+                }, 1000);
             }
         },
         error: function () {
             setTimeout(function () {
                 modalLoading.hide();
                 alert("Terjadi kesalahan.");
-            }, 3000);
+            }, 1000);
         }
     });
 });

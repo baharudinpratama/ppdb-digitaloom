@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <label for="achievement-file" class="form-label mb-4">Upload Dokumen</label>
                     <div class="d-flex w-100 flex-column align-items-center justify-content-between" style="margin-bottom: 18px; padding: 3rem; gap: 1.5rem; border-radius: var(--bs-border-radius); border: 1px solid var(--bs-border-color)">
-                        <img src="<?= base_url('/assets/images/upload.png') ?>" alt="upload" width="46">
+                        <img src="<?= base_url('/assets/img/upload.png') ?>" alt="upload" width="46">
                         <div class="d-flex flex-column text-center" style="gap: 1rem;">
                             <p class="fw-bold">Upload Bukti/Sertifikat Prestasi Lomba dalam bentuk PDF/JPG/PNG ukuran Maks 2mb</p>
                             <p class="fw-bold color-body" style="font-size: 13px;">Pastikan dokumen terbaca dengan jelas dan sah (memiliki tanda tangan/pengesahan resmi)</p>

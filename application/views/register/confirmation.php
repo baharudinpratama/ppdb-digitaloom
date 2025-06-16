@@ -54,7 +54,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="d-flex flex-column p-5 align-items-center">
-                    <img src="<?= base_url('/assets/images/message.gif') ?>" alt="Message" width="160" class="img-fluid mb-4">
+                    <img src="<?= base_url('/assets/img/message.gif') ?>" alt="Message" width="160" class="img-fluid mb-4">
                     <p class="fw-bold" style="font-size: 20px;">Sedang Mengirim...</p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="d-flex flex-column p-5 align-items-center">
-                    <img src="<?= base_url('/assets/images/approved.gif') ?>" alt="Approved" width="140" class="img-fluid mb-4">
+                    <img src="<?= base_url('/assets/img/approved.gif') ?>" alt="Approved" width="140" class="img-fluid mb-4">
                     <p class="mb-4 fw-bold" style="font-size: 20px;">Pendaftaran Peserta Didik Berhasil!!!</p>
                     <p class="text-center fw-semibold">Data pendaftaran Anda telah berhasil dikirim. Silakan pantau info pengumuman serta informasi Tahapan selanjutnya melalui Notifikasi WhatsApp yang akan kami kirimkan. Semoga sukses!</p>
                 </div>

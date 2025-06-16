@@ -29,6 +29,6 @@
     <p class="mb-4 fw-bold" style="font-size: 1.25rem;">Alamat Tempat Tinggal</p>
 
     <ul>
-        <li>Alamat Lengkap : <span class="fw-bold"><?= $parents[0]->address ?></span></li>
+        <li>Alamat Lengkap : <span class="fw-bold"><?= sizeof($parents) > 0 ? $parents[0]->address : '' ?></span></li>
     </ul>
 </div>

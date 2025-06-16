@@ -59,3 +59,8 @@ $route['logout'] = '/auth/logout';
 
 $route['students'] = '/student';
 $route['students/(:num)'] = '/student/show/$1';
+
+$route['payments'] = '/payment';
+$route['tests'] = '/test';
+$route['users'] = '/student/user';
+$route['users/(:num)'] = '/student/user_show/$1';

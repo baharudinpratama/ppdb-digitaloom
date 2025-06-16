@@ -21,7 +21,7 @@ class Auth extends CI_Controller
             if ($user && password_verify($password, $user->password)) {
                 $this->session->set_userdata('user_id', $user->id);
                 $this->session->set_userdata('username', $user->username);
-                $this->session->set_userdata('role', $user->student_id === null ? 'admin' : 'murid');
+                $this->session->set_userdata('role', $user->student_id === null ? 'admin' : 'student');
 
                 $this->output
                     ->set_content_type('application/json')
@@ -66,6 +66,6 @@ class Auth extends CI_Controller
     {
         $this->session->sess_destroy();
 
-        redirect('auth/login');
+        redirect('login');
     }
 }
