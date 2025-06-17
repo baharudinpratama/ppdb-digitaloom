@@ -28,10 +28,14 @@ class Payment extends MY_Controller
         $data_content = [
             'students' => $students,
             'count_not_paid' => $not_paid,
-            'count_paid' => $paid
+            'count_paid' => $paid,
+            'breadcrumbs' => [
+                ['title' => 'Seleksi Calon Siswa', 'last' => false],
+                ['title' => 'Data Pembayaran', 'last' => true],
+            ]
         ];
 
-        $data['page_title'] = 'Data Pendaftar';
+        $data['page_title'] = 'Data Pembayaran';
         $data['sidebar'] = $this->load->view('templates/main/sidebar', ['active_menu' => 'payment'], TRUE);
         $data['navbar'] = $this->load->view('templates/main/navbar', [], TRUE);
         $data['content'] = $this->load->view('payment/index', $data_content, TRUE);

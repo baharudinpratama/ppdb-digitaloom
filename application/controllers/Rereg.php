@@ -28,7 +28,11 @@ class Rereg extends MY_Controller
 
         $data_content = [
             'students' => $students,
-            'count_uploaded' => $count_uploaded
+            'count_uploaded' => $count_uploaded,
+            'breadcrumbs' => [
+                ['title' => 'Daftar Ulang Calon Siswa', 'last' => false],
+                ['title' => 'Daftar Pendaftar Ulang', 'last' => true],
+            ]
         ];
 
         $data['page_title'] = 'Berkas & Bukti Pembayaran';
@@ -101,10 +105,10 @@ class Rereg extends MY_Controller
 
         $data_content = [
             'student' => $this->Student_model->get_by_id($student_id),
-            'student_uploads' => $this->db->get_where('student_uploads', ['student_id' => $student_id])->result()
+            'student_uploads' => $this->db->get_where('student_uploads', ['student_id' => $student_id])->result(),
         ];
 
-        $data['page_title'] = 'Data Pendaftar';
+        $data['page_title'] = 'Data Pendaftar Ulang';
         $data['sidebar'] = $this->load->view('templates/main/sidebar', ['active_menu' => 'upload'], TRUE);
         $data['navbar'] = $this->load->view('templates/main/navbar', [], TRUE);
         $data['content'] = $this->load->view('rereg/upload', $data_content, TRUE);

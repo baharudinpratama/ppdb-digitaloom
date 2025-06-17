@@ -39,10 +39,14 @@ class Test extends MY_Controller
             'students' => $students,
             'count_new' => $new,
             'count_passed' => $passed,
-            'count_failed' => $failed
+            'count_failed' => $failed,
+            'breadcrumbs' => [
+                ['title' => 'Seleksi Calon Siswa', 'last' => false],
+                ['title' => 'Data Tes', 'last' => true],
+            ]
         ];
 
-        $data['page_title'] = 'Data Pendaftar';
+        $data['page_title'] = 'Data Tes';
         $data['sidebar'] = $this->load->view('templates/main/sidebar', ['active_menu' => 'test'], TRUE);
         $data['navbar'] = $this->load->view('templates/main/navbar', [], TRUE);
         $data['content'] = $this->load->view('test/index', $data_content, TRUE);

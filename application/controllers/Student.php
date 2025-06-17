@@ -17,7 +17,10 @@ class Student extends MY_Controller
     public function index()
     {
         $data_content = [
-            'students' => $this->Student_model->get_all()
+            'students' => $this->Student_model->get_all(),
+            'breadcrumbs' => [
+                ['title' => 'Data Pendaftar', 'last' => true],
+            ]
         ];
 
         $data['page_title'] = 'Data Pendaftar';
@@ -86,7 +89,11 @@ class Student extends MY_Controller
         }
 
         $data_content = [
-            'students' => $students
+            'students' => $students,
+            'breadcrumbs' => [
+                ['title' => 'Daftar Ulang Calon Siswa', 'last' => false],
+                ['title' => 'Daftar Akun', 'last' => true],
+            ]
         ];
 
         $data['page_title'] = 'Daftar Akun';

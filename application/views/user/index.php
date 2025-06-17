@@ -43,9 +43,29 @@
 </style>
 
 <div class="d-flex flex-column p-3">
-    <div class="d-flex flex-column mb-3 py-4">
+    <div class="d-flex flex-column mt-4 mb-1">
         <h1 class="fw-bold" style="font-size: 1.5rem;">Data Calon Siswa Baru</h1>
     </div>
+
+    <?php if (isset($breadcrumbs)) : ?>
+        <div class="d-flex align-items-center mb-5 gap-3">
+            <?php if (sizeof($breadcrumbs) === 1): ?>
+                <span class="fw-bold" style="color: #43B638"><?= $breadcrumbs[0]['title'] ?></span>
+            <?php else : ?>
+                <?php foreach ($breadcrumbs as $breadcrumb) : ?>
+                    <?php
+                    $color = "";
+                    $breadcrumb['last'] ? $color = "#43B638" : $color = "#989898";
+                    ?>
+
+                    <span class="fw-bold" style="color: <?= $color ?>"><?= $breadcrumb['title'] ?></span>
+                    <?php if (!$breadcrumb['last']) : ?>
+                        /
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
 
     <div class="position-relative d-flex w-100 mb-5 p-5 rounded-4 bg-success overflow-hidden" style="min-height: 13rem;">
         <div class="position-absolute" style="top: -3.5rem; right: -20rem;">
