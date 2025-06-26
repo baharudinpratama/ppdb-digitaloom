@@ -18,24 +18,3 @@ if (localStorage.getItem("gradeForm")) {
         $("#grade-form-status").css("color", "#43b638");
     }
 }
-
-
-indexedDB.open("StudentFormDB", 1).onsuccess = function (e) {
-    const db = e.target.result;
-    const tx = db.transaction("fileUploads", "readonly");
-    const store = tx.objectStore("fileUploads");
-    const getReq = store.get("achievementFiles");
-
-    getReq.onsuccess = function () {
-        const result = getReq.result;
-
-        if (result && Array.isArray(result.files) && result.files.length > 0) {
-            $("#achievement-form-status").text("Sudah diisi");
-            $("#achievement-form-status").css("color", "#43b638");
-        }
-    };
-
-    getReq.onerror = function () {
-        console.error("Failed to get achievementFiles from IndexedDB.");
-    };
-};

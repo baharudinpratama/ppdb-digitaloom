@@ -12,17 +12,24 @@ request.onupgradeneeded = function (e) {
 };
 
 request.onsuccess = function (e) {
-    db = e.target.result;
-    db.transaction("fileUploads", "readonly")
-        .objectStore("fileUploads")
-        .get("achievementFiles")
-        .onsuccess = function () {
-            const result = getReq.result;
+    const db = e.target.result;
 
-            if (!result) {
-                localStorage.setItem("achievementFileNames", JSON.stringify([]));
-            }
-        };
+    const tx = db.transaction("fileUploads", "readonly");
+    const store = tx.objectStore("fileUploads");
+
+    const getReq = store.get("achievementFiles");
+
+    getReq.onsuccess = function () {
+        const result = getReq.result;
+
+        if (!result) {
+            localStorage.setItem("achievementFileNames", JSON.stringify([]));
+        }
+    };
+
+    getReq.onerror = function () {
+        console.error("Failed to fetch achievementFiles.");
+    };
 
     loadForm("achievementForm");
 };
