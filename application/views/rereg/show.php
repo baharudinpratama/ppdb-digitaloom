@@ -41,22 +41,14 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <?php
-            $text = '';
-            $color = '';
+            $text = 'Menunggu Konfirmasi';
+            $color = 'badge text-bg-secondary';
 
-            switch ($student->payment->status) {
-                case 'new':
-                    $text = 'Menunggu Konfirmasi';
-                    $color = 'text-secondary';
-                    break;
-                case 'confirmed':
-                    $text = 'Sudah Dikonfirmasi';
-                    $color = 'text-success';
-                    break;
-                default:
-                    $text = '';
-                    $color = '';
-                    break;
+            if (isset($student->payment->status)) {
+                if ($student->payment->status === 'confirmed') {
+                    $text = 'Pembayaran Diterima';
+                    $color = 'badge text-bg-success';
+                }
             }
             ?>
             <p class="fw-semibold">Status Pembayaran : <span class="fw-bold <?= $color ?>"><?= $text ?></span></p>

@@ -138,22 +138,14 @@
                         </td>
                         <td class="fw-semibold text-center">
                             <?php
-                            $text = '';
-                            $color = '';
+                            $text = 'Menunggu Konfirmasi';
+                            $color = 'badge text-bg-secondary';
 
-                            switch ($student->payment->status === 'confirmed') {
-                                case true:
+                            if (isset($student->payment->status)) {
+                                if ($student->payment->status === 'confirmed') {
                                     $text = 'Pembayaran Diterima';
                                     $color = 'badge text-bg-success';
-                                    break;
-                                case false:
-                                    $text = 'Menunggu Konfirmasi';
-                                    $color = 'badge text-bg-secondary';
-                                    break;
-                                default:
-                                    $text = '';
-                                    $color = '';
-                                    break;
+                                }
                             }
                             ?>
                             <span class="<?= $color ?>"><?= $text ?></span>

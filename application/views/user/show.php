@@ -39,7 +39,7 @@
     <div class="d-flex flex-column mb-4 p-5 rounded-4 bg-white">
         <div class="col-md-6 mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" value="<?= $user->username ?? '' ?>" placeholder="Username" <?= $user->username ? 'disabled' : '' ?>>
+            <input type="text" class="form-control" id="username" value="<?= $user->username ?? '' ?>" placeholder="Username" <?= isset($user->username) ? 'disabled' : '' ?>>
         </div>
         <div class="col-md-6 mb-3">
             <label for="password" class="form-label">Password</label>
