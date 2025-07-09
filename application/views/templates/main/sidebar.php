@@ -107,8 +107,8 @@
 
     <?php if ($this->session->role === 'student') : ?>
         <div class="d-flex flex-column mb-5 gap-1">
-            <p class="fw-bold" style="font-size: 0.75rem;">NISN : </p>
-            <p class="fw-bold text-black" style="font-size: 1.125rem;">Nama</p>
+            <p class="fw-bold" style="font-size: 0.75rem;">NISN : <?= $this->session->nisn ?></p>
+            <p class="fw-bold text-black" style="font-size: 1.125rem;"><?= $this->session->name ?></p>
             <p class="fw-medium text-black">Jenjang Dipilih : Mts / Kelas 7</p>
         </div>
 
