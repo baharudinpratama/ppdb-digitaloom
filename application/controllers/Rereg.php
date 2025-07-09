@@ -208,4 +208,23 @@ class Rereg extends MY_Controller
 
         $this->load->view('layouts/main', $data);
     }
+
+    public function notification()
+    {
+        $student_id = $this->User_model->get_by_id($this->session->userdata('user_id'))->student_id;
+
+        $data_content = [
+            'student' => $this->Student_model->get_by_id($student_id),
+            'student_payment' => $this->Payment_model->get_rereg_by_student($student_id)
+        ];
+
+        $data['page_title'] = 'Pengumuman';
+        $data['sidebar'] = $this->load->view('templates/main/sidebar', ['active_menu' => 'notification'], TRUE);
+        $data['navbar'] = $this->load->view('templates/main/navbar', [], TRUE);
+        $data['content'] = $this->load->view('rereg/notification', $data_content, TRUE);
+
+        $data['script'] = '<script src="' . base_url('/assets/js/rereg/notification.js') . '"></script>';
+
+        $this->load->view('layouts/main', $data);
+    }
 }
